@@ -153,24 +153,43 @@ Certificate Request:
 
 ###### Ahora tenemos que enviar el certificado a la autoridad certificadora de Gonzalonazareno para que nos la firme
 
+![Tarea1.1_HTTPS](image/Tarea1.1_HTTPS.png)
+
 ###### Cuando tengamos disponible el certificado firmado, tenemos que añadir a los ficheros de configuración del hosting de wordpress y nextcloud las siguientes lineas a continuación del *listen 80*
 
 ~~~
-listen 443;
-ssl_certificate /etc/pki/tls/amorales.gonzalonazareno.org.crt;
-ssl_certificate_key /etc/pki/tls/private/gonzalonazareno.pem;
+server {
+        listen 443;
+        server_name  www.amorales.gonzalonazareno.org;
+        ssl on;
+        ssl_certificate /etc/pki/tls/amorales.gonzalonazareno.org.crt;
+        ssl_certificate_key /etc/pki/tls/private/gonzalonazareno.pem;
 ~~~
+
+###### Además tenemos que hacer la redirección desde *http* a *https* añadiendo la siguiente lines en la listen 80 de los dos hosting
+
+~~~
+rewrite ^ https://$server_name$request_uri permanent;
+~~~
+
 
 ###### Quedaría una cosa así
 
 ~~~
 server {
     listen 80;
-    listen 443 ssl;
-    server_name cloud.amorales.gonzalonazareno.org;
+    server_name  www.amorales.gonzalonazareno.org;
+    rewrite ^ https://$server_name$request_uri permanent;
+}
+
+server {
+    listen 443;
+    server_name  www.amorales.gonzalonazareno.org;
+    ssl on;
     ssl_certificate /etc/pki/tls/amorales.gonzalonazareno.org.crt;
     ssl_certificate_key /etc/pki/tls/private/gonzalonazareno.pem;
 ~~~
+
 
 ###### Además tenemos que descomentar la parte de del ssl del fichero */etc/nginx/nginx.conf* y cambiar la ruta de nuestro certificado y de nuestra clave privada
 
@@ -213,12 +232,14 @@ sudo systemctl restart nginx
 
 ###### Hecho esto podemos haceder a la dirección *https://* de los deos servicios, pero nos saldrá el mensaje de conexión privada
 
-![Tarea1.1_HTTPS](image/Tarea1.1_HTTPS.png)
+![Tarea1.2_HTTPS](image/Tarea1.2_HTTPS.png)
 
 ###### Para solucionar esto tenemos que añadir el certificado de la undidad certificadora del Gonzalonazareno en el navegador
 
-![Tarea1.2_HTTPS](image/Tarea1.3_HTTPS.png)
+![Tarea1.3_HTTPS](image/Tarea1.3_HTTPS.png)
 
 ###### Ahora ya tendremos certificadas las paginas de nextcloud y wordpress
 
-![Tarea1.3_HTTPS](image/Tarea1.3_HTTPS.png)
+![Tarea1.4_HTTPS](image/Tarea1.4_HTTPS.png)
+
+![Tarea1.5_HTTPS](image/Tarea1.5_HTTPS.png)
