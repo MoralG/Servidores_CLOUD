@@ -92,7 +92,7 @@ zone "0.0.10.in-addr.arpa"
 
 zone "200.22.172.in-addr.arpa"
 {
-  file "db.200.22.172";
+  file "db.22.172";
   type master;
 };
 ~~~
@@ -116,7 +116,7 @@ $ORIGIN 0.0.10.in-addr.arpa.
 19      IN      PTR     salmorejo.amorales.gonzalonazareno.org.
 ~~~
 
-###### Modificamos el fichero */var/cache/bind/db.200.22.172*
+###### Modificamos el fichero */var/cache/bind/db.22.172*
 
 ~~~
 $TTL    86400
@@ -130,9 +130,9 @@ $TTL    86400
 @               IN      NS      amorales.gonzalonazareno.org.
 
 $ORIGIN 200.22.172.in-addr.arpa.
-125       IN      PTR     croqueta.amorales.gonzalonazareno.org.
-126       IN      PTR     tortilla.amorales.gonzalonazareno.org.
-127       IN      PTR     salmorejo.amorales.gonzalonazareno.org.
+200.125       IN      PTR     croqueta.amorales.gonzalonazareno.org.
+200.126       IN      PTR     tortilla.amorales.gonzalonazareno.org.
+200.127       IN      PTR     salmorejo.amorales.gonzalonazareno.org.
 ~~~
 
 ###### Tenemos que reiniciar el bind
@@ -156,8 +156,8 @@ sudo named-checkzone 0.0.10.in-addr.arpa /var/cache/bind/db.0.0.10
    OK
 
 
-sudo named-checkzone 200.22.172.in-addr.arpa /var/cache/bind/db.200.22.172
-   zone 200.22.172.in-addr.arpa/IN: loaded serial 1
+sudo named-checkzone 200.22.172.in-addr.arpa /var/cache/bind/db.22.172
+   zone 22.172.in-addr.arpa/IN: loaded serial 1
    OK
 ~~~
 

@@ -20,7 +20,7 @@ sudo dnf install mod_ssl
 ###### Creamos la clave privada con el siguiente comando
 
 ~~~
-sudo openssl genrsa -out amorales.gonzalonazareno.org.key 4096
+sudo openssl genrsa -out gonzalonazareno.pem 4096
    Generating RSA private key, 4096 bit long modulus (2 primes)
    ...............................................................................++++
    ............................................++++
@@ -30,29 +30,26 @@ sudo openssl genrsa -out amorales.gonzalonazareno.org.key 4096
 ###### Creamos un fichero de configuración, amorales.gonzalonazareno.org.conf, y le añadimos lo siguiente
 
 ~~~
-[ req ]
-default_bits       = 4096
-default_keyfile    = amorales.gonzalonazareno.org.key
-distinguished_name = req_distinguished_name
+[req]
+default_bits = 4096
+prompt = no
+default_md = RSA
+distinguished_name = dn
 
-[ req_distinguished_name ]
-countryName                 = Country Name (2 letter code)
-countryName_default         = SP
-stateOrProvinceName         = State or Province Name (full name)
-stateOrProvinceName_default = Seville
-localityName                = Locality Name (eg, city)
-localityName_default        = Dos Hermanas
-organizationName            = Organization Name (eg, company)
-organizationName_default    = amorales
-commonName                  = Common Name (e.g. server FQDN or YOUR name)
-commonName_max              = 64
-commonName_default          = *.amorales.gonzalonazareno.org
+[ dn ]
+C =             ES
+ST =            Sevilla
+L =             Dos Hermanas
+O =             IES Gonzalo Nazareno
+OU =            Informatica
+emailAddress =  ale95mogra@gmail.com
+CN =            *.amorales.gonzalonazareno.org
 ~~~
 
 ###### Creamos el certificado para nuestras páginas
-
+sudo openssl req -new -sha256 -nodes -out amorales.gonzalonazareno.org.csr -newkey rsa:4096 -keyout gonzalonazareno.pem -config gonzalonazareno.conf
 ~~~
-sudo openssl req -new -nodes -sha256 -config amorales.gonzalonazareno.org.conf -out amorales.gonzalonazareno.org.csr
+
    Generating a RSA private key
    .......................................................................................   ............++++
    .......................................................................................   ........................................++++
@@ -76,83 +73,152 @@ sudo openssl req -new -nodes -sha256 -config amorales.gonzalonazareno.org.conf -
 
 ~~~
 openssl req -in amorales.gonzalonazareno.org.csr -noout -text
-   Certificate Request:
+Certificate Request:
     Data:
         Version: 1 (0x0)
-        Subject: C = SP, ST = Seville, L = Dos Hermanas, O = amorales, CN = *.amorales.gonzalonazareno.org
+        Subject: C = ES, ST = Sevilla, L = Dos Hermanas, O = IES Gonzalo Nazareno, OU = Informatica, emailAddress = ale95mogra@gmail.com, CN = *.amorales.gonzalonazareno.org
         Subject Public Key Info:
             Public Key Algorithm: rsaEncryption
                 RSA Public-Key: (4096 bit)
                 Modulus:
-                    00:cc:f5:f5:ca:14:fd:ef:bf:33:43:18:78:16:47:
-                    cf:8a:5e:ed:85:b1:e6:0d:2a:fd:9b:5a:b8:01:c4:
-                    5d:30:02:c2:4e:56:8d:f8:c6:af:55:a5:24:51:ab:
-                    45:d9:83:5d:f8:01:f4:bf:c7:0c:d7:8b:9c:3b:3b:
-                    53:ad:7a:8d:f1:e9:56:6b:cf:31:a4:7c:e1:77:9a:
-                    20:c9:56:16:e2:81:7c:39:d7:9f:9e:c7:a8:9c:35:
-                    b4:db:8b:e5:d7:38:7a:39:8c:3e:72:67:6c:16:8d:
-                    11:f0:60:e8:61:07:be:a6:7e:df:bd:09:58:02:10:
-                    0b:b9:60:ba:b7:40:26:50:09:7f:5d:df:99:d2:f3:
-                    3f:98:c2:05:eb:4c:3e:a8:0c:ed:af:42:8a:ce:38:
-                    c4:7d:3e:4a:7d:77:01:ed:0f:8b:f6:8d:e6:a6:7b:
-                    8b:e5:6a:92:fa:4e:b2:97:ce:7a:bb:9c:dc:2a:10:
-                    fa:e8:84:5d:a9:89:82:b5:8e:0c:98:31:5a:54:20:
-                    66:79:f9:ef:6a:1d:bc:d4:79:7d:a7:08:7c:db:8b:
-                    cd:f4:8b:7d:ac:3e:3c:d0:d1:fa:12:9c:a3:0d:2c:
-                    21:e1:c8:d3:eb:2d:df:66:91:05:2f:a9:04:d6:cb:
-                    90:12:df:df:52:cd:34:b1:2f:ef:bd:36:d1:ce:09:
-                    d4:74:48:e7:d6:10:7d:c5:7d:ae:c9:50:88:2b:48:
-                    87:41:84:e0:a1:ab:91:de:63:5b:cf:a7:52:fe:54:
-                    18:e7:5f:81:fe:54:e3:d9:eb:60:79:c4:ea:74:3f:
-                    b9:5a:82:a1:07:df:1c:1f:e1:9a:84:aa:fa:61:9e:
-                    fa:54:bf:c3:4a:f4:83:cc:fd:57:42:2f:4c:c5:e0:
-                    fb:6a:07:a5:3a:f1:5c:59:41:2d:dd:ce:ae:d2:5a:
-                    21:b5:81:e8:e5:84:7f:48:2d:ba:de:01:47:62:76:
-                    c7:2a:3f:95:19:fa:83:a3:a6:16:39:98:57:b0:68:
-                    e6:9b:5f:7f:85:c2:21:12:ae:97:6f:a3:a9:4e:a5:
-                    51:38:4c:de:1d:aa:d2:55:4d:55:1d:27:25:58:a4:
-                    51:63:c9:56:ef:99:c1:92:1e:5c:e1:75:7e:a1:23:
-                    4b:57:39:ba:d2:b2:27:c2:b3:32:02:2b:f2:a9:fb:
-                    62:3b:cc:e2:a0:e0:cd:26:1f:7c:cb:9a:f0:bb:e9:
-                    75:7f:5b:16:4b:82:75:03:5e:a7:7b:28:ec:b0:61:
-                    8a:1b:e7:2b:13:7e:25:aa:7b:0e:cb:75:e9:b4:32:
-                    9f:e2:9f:6d:db:b8:f1:e9:d1:5d:40:cc:dc:97:22:
-                    dc:4b:f5:6a:21:35:ec:6a:2a:0f:d9:4a:00:26:9e:
-                    0b:10:b7
+                    00:a8:d3:6a:48:38:b5:e4:86:04:78:04:4b:aa:e1:
+                    3d:77:0f:12:12:b3:f6:b5:39:fa:62:26:1e:bf:58:
+                    c4:b7:00:6c:37:87:04:d1:1b:a5:6c:e6:81:9b:3c:
+                    53:eb:24:0d:ea:21:e9:3c:66:9e:16:f7:56:44:4f:
+                    02:ee:7e:99:e7:69:5f:0b:53:4f:e8:5c:26:5b:bc:
+                    68:a5:9a:b1:7e:c1:c9:0b:66:cf:9a:f4:4f:90:04:
+                    0d:d4:29:19:17:09:1f:fd:9b:53:8e:53:93:78:22:
+                    91:a9:0c:d1:12:fb:bf:36:63:d1:7c:90:ea:64:2b:
+                    22:9a:a5:8a:c0:7e:3e:d6:ac:e0:70:b5:2c:03:9d:
+                    83:54:45:1e:6a:90:48:ee:d1:d2:07:d7:e9:fe:3b:
+                    52:64:5b:1f:19:70:c9:b8:2c:b9:4f:0c:28:09:ba:
+                    2e:69:c7:af:60:e2:99:11:fb:d2:3a:90:77:e1:da:
+                    b2:d9:4e:ba:b8:f9:64:aa:df:e0:7c:5a:e0:7f:d0:
+                    80:e0:01:fc:3e:57:d3:14:81:72:57:6a:42:92:88:
+                    47:5e:f3:5d:aa:54:9b:21:14:d2:9c:b3:b2:20:68:
+                    40:51:8a:12:9f:33:da:1a:05:04:42:4a:51:0c:06:
+                    3a:01:5c:43:96:32:0b:9a:32:74:26:f2:b9:88:d5:
+                    99:55:42:ca:4a:e6:04:6e:67:bd:55:ff:3c:43:c0:
+                    e2:4c:9c:bd:9b:8d:e5:a0:9c:04:3a:40:c7:00:be:
+                    eb:d9:8b:bd:6f:11:5f:81:3d:29:ba:66:fe:4a:7e:
+                    3c:fd:e9:34:4e:63:4f:7e:bb:2e:e9:6b:bd:21:82:
+                    57:87:a3:52:ed:1d:2d:20:ef:77:32:1c:6a:79:34:
+                    9f:6c:77:4c:26:1a:f2:c7:07:2f:8a:81:1e:3c:89:
+                    6c:df:8f:e6:27:a0:43:6b:d3:95:6c:73:28:84:7d:
+                    3b:5d:7e:99:10:e7:eb:6a:8a:4c:3c:25:30:31:11:
+                    f9:04:04:d5:98:e3:53:78:86:3e:5b:0e:4e:cd:37:
+                    61:e2:9f:8f:db:54:16:52:81:30:e0:3c:b5:e7:bd:
+                    66:36:68:ae:0e:5e:c6:c6:5d:a0:34:a0:66:48:e3:
+                    4c:40:16:13:57:cd:55:29:cf:01:e6:7b:95:03:f3:
+                    fd:70:b3:3c:fc:62:b4:d0:8f:5e:a0:f5:1d:a3:45:
+                    87:dd:27:62:64:c3:eb:e6:ea:35:c4:50:a1:f9:58:
+                    d0:42:8b:5e:6d:01:97:93:b6:07:e8:ee:cd:e9:34:
+                    34:00:9b:d3:91:e5:40:12:39:ab:3b:52:0c:96:f5:
+                    8b:04:08:a0:0d:9a:d8:e7:e7:9c:61:6f:e2:3b:e2:
+                    ea:ab:db
                 Exponent: 65537 (0x10001)
         Attributes:
             a0:00
     Signature Algorithm: sha256WithRSAEncryption
-         b6:b2:ee:6a:69:03:e1:e1:95:51:2e:fd:24:ce:68:bd:86:c8:
-         dc:8b:33:9c:7c:b2:4b:a6:59:50:23:c5:1d:dc:1c:33:a6:17:
-         60:12:fb:33:49:cc:dc:e1:fb:42:e3:62:12:c6:7e:b2:f8:6e:
-         70:9d:77:bc:76:96:04:3a:63:38:19:7b:3e:da:1b:e1:0b:f2:
-         1b:cf:f4:78:15:2f:ce:1c:54:48:8c:a8:6e:d7:84:42:fe:2b:
-         5e:80:97:da:47:be:0c:25:3a:b5:27:67:0e:e6:a5:d9:43:0f:
-         cf:73:f3:84:4e:ae:0e:db:a9:04:6c:f5:a6:19:08:14:8d:b4:
-         bd:d4:05:52:a2:dc:c7:8f:a5:2b:1c:33:28:03:71:13:cc:9b:
-         c0:06:52:44:2d:d6:55:e1:64:58:66:5e:4e:e6:87:02:dc:3d:
-         ab:12:f1:9d:bc:dd:53:c2:3f:a4:7e:94:30:f9:0e:bc:25:17:
-         e6:11:77:75:c4:79:84:52:fa:48:b0:71:de:04:bc:32:c5:2e:
-         6c:ca:07:d2:a3:aa:c6:ee:ec:f6:8a:22:f4:4b:91:a8:3f:1d:
-         1e:30:a8:a7:92:c4:5d:c1:7c:53:98:f3:93:68:ee:5c:c0:8c:
-         68:41:43:1c:ff:f6:ed:2a:2b:ac:71:28:bb:19:f7:b3:6d:c8:
-         8c:42:d6:8c:b3:b6:a0:d5:c9:c5:70:a2:8f:31:ad:5b:f1:34:
-         b7:2f:35:71:f5:db:6b:e9:f0:e8:31:e7:0e:e1:f3:f8:db:7a:
-         04:f4:58:65:59:db:27:54:e1:64:49:b1:9e:f1:84:43:75:e1:
-         aa:74:f2:b4:32:f6:58:9a:74:ae:e1:bb:71:0f:9b:ad:60:95:
-         da:3b:2c:98:e4:b7:bd:49:13:92:72:ec:35:c2:83:44:f4:ac:
-         0d:dc:b4:72:ec:16:3d:77:93:ee:88:e8:b1:5d:92:cb:a3:7c:
-         76:94:26:0c:77:1a:44:c4:69:cf:5a:78:b1:82:4a:11:b8:59:
-         8d:56:f9:70:8b:a6:11:4c:d1:11:92:8c:ce:5d:79:4f:bc:d3:
-         38:6c:dd:30:af:14:0e:f4:2f:c1:16:6d:bd:bb:da:57:25:fc:
-         07:ac:7d:57:47:37:2f:c1:ea:b6:10:56:98:d9:62:ec:14:88:
-         f0:05:d4:e6:f3:11:f8:7b:a6:84:86:55:e7:d7:4c:ff:1a:59:
-         6c:73:8b:55:5a:29:94:7f:d4:ef:15:98:9b:9f:32:3b:d5:79:
-         84:c6:75:e1:7a:85:a1:c9:f8:9c:7c:69:b2:91:52:a2:23:4d:
-         25:29:50:a6:01:68:f5:2a:87:a9:57:a3:a3:fb:17:27:f6:e5:
-         26:31:2e:35:d9:2c:08:11
+         4c:10:c7:9b:a7:05:d5:bb:61:89:6e:11:86:f0:db:6b:41:27:
+         d8:e0:8d:81:54:28:8e:98:4a:97:0f:1b:3b:92:3b:2c:1f:21:
+         bd:46:a0:f3:ff:09:0f:34:37:eb:f4:47:36:0e:0b:37:60:fd:
+         7a:a3:30:56:74:85:79:1a:a7:7a:9a:d9:56:c5:5e:5a:c6:f1:
+         4a:42:b8:33:49:22:3a:93:81:6b:14:a2:fc:3b:6a:fc:83:5a:
+         3a:96:7a:69:8d:ac:83:18:ec:9a:f9:f4:bc:27:94:18:59:82:
+         93:e1:79:fb:d2:25:fa:9c:b1:f3:31:52:5f:cc:e3:02:70:b3:
+         0b:55:05:43:cd:76:5a:36:fe:57:70:3a:0c:bd:cb:7d:ed:bf:
+         8d:e4:ce:42:b9:21:88:b1:f5:ef:70:bc:d5:bd:4e:01:df:00:
+         1d:9d:81:eb:16:1f:ca:9d:52:4a:e6:e3:0e:a9:b2:23:0c:25:
+         38:be:02:92:ec:65:43:6b:f0:79:bc:e4:d6:49:27:23:0c:9f:
+         34:e2:67:92:da:80:cf:6c:4d:d5:03:2c:e7:cb:5a:aa:db:e5:
+         24:07:3a:8b:2f:a3:36:67:f9:ec:66:2e:6b:e4:cc:19:89:49:
+         31:8f:55:e1:b4:5b:f2:f1:2d:13:fe:9f:b4:ce:2e:d3:05:1d:
+         24:a5:c3:ca:bd:e1:0b:12:06:b3:b2:b8:c9:04:0c:92:01:f1:
+         5b:ac:21:be:1b:5e:9d:f0:ad:4b:84:25:91:c1:97:4b:83:4b:
+         93:fd:5a:6e:54:7b:6e:50:53:b8:9c:4e:b2:b8:ef:44:c0:38:
+         f8:09:cc:bb:ad:9b:47:47:90:27:db:eb:f3:97:c9:d1:a0:25:
+         e3:06:2a:a6:f4:10:a3:b7:ee:c0:64:eb:e2:59:16:84:82:62:
+         da:52:4b:db:71:6b:68:95:be:4a:ff:8b:f6:6c:45:cf:18:b2:
+         a4:12:32:e7:3c:3d:f4:73:d1:b2:82:84:7c:15:b6:ca:7f:0f:
+         77:1e:7b:f8:f6:5d:49:98:1c:4a:38:ed:15:fd:8b:f5:99:75:
+         66:2e:e4:1f:4a:20:79:27:aa:ae:74:2e:81:63:ca:d1:68:9c:
+         78:db:4a:e8:85:b4:b5:b4:03:d5:17:d5:d3:3b:27:66:03:e1:
+         27:dc:9b:d9:f2:9d:86:d4:fa:32:7e:c3:20:5c:a1:a8:3f:9d:
+         c7:ab:b8:83:be:59:05:7e:39:87:40:e5:d4:65:33:5b:c0:9e:
+         57:38:a2:a5:e5:78:d0:7c:76:f7:06:49:3f:d9:8b:74:82:ba:
+         27:b6:48:04:ee:d7:e1:0e:65:41:82:fc:11:fc:f1:87:4c:46:
+         3b:c8:80:18:57:d2:02:ef
 ~~~
 
-###### Ahora tenemos que enviar el certificado a la autoridad certificadora de Gonzalonazareno para que nos la firme.
+###### Ahora tenemos que enviar el certificado a la autoridad certificadora de Gonzalonazareno para que nos la firme
 
+###### Cuando tengamos disponible el certificado firmado, tenemos que añadir a los ficheros de configuración del hosting de wordpress y nextcloud las siguientes lineas a continuación del *listen 80*
+
+~~~
+listen 443;
+ssl_certificate /etc/pki/tls/amorales.gonzalonazareno.org.crt;
+ssl_certificate_key /etc/pki/tls/private/gonzalonazareno.pem;
+~~~
+
+###### Quedaría una cosa así
+
+~~~
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name cloud.amorales.gonzalonazareno.org;
+    ssl_certificate /etc/pki/tls/amorales.gonzalonazareno.org.crt;
+    ssl_certificate_key /etc/pki/tls/private/gonzalonazareno.pem;
+~~~
+
+###### Además tenemos que descomentar la parte de del ssl del fichero */etc/nginx/nginx.conf* y cambiar la ruta de nuestro certificado y de nuestra clave privada
+
+~~~
+server {
+listen       443 ssl http2 default_server;
+    listen       [::]:443 ssl http2 default_server;
+    server_name  _;
+    root         /usr/share/nginx/html;
+    ssl_certificate "/etc/pki/tls/amorales.gonzalonazareno.org.crt";
+    ssl_certificate_key "/etc/pki/tls/private/gonzalonazareno.pem";
+    ssl_session_cache shared:SSL:1m;
+    ssl_session_timeout  10m;
+    ssl_ciphers PROFILE=SYSTEM;
+    ssl_prefer_server_ciphers on;
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+    location / {
+    }
+error_page 404 /404.html;
+        location = /40x.html {
+    }
+error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+    }
+}
+~~~
+
+###### Ahora tenemos que permitir a nginx que pueda leer en el directorio donde tenemos el certificado y la clave, ya que SElinux lo tiene bloqueado
+
+~~~
+restorecon -v -R /etc/pki/tls/
+~~~
+
+###### Reiniciamos el servicio de nginx
+
+~~~
+sudo systemctl restart nginx
+~~~
+
+###### Hecho esto podemos haceder a la dirección *https://* de los deos servicios, pero nos saldrá el mensaje de conexión privada
+
+![Tarea1.1_HTTPS](image/Tarea1.1_HTTPS.png)
+
+###### Para solucionar esto tenemos que añadir el certificado de la undidad certificadora del Gonzalonazareno en el navegador
+
+![Tarea1.2_HTTPS](image/Tarea1.3_HTTPS.png)
+
+###### Ahora ya tendremos certificadas las paginas de nextcloud y wordpress
+
+![Tarea1.3_HTTPS](image/Tarea1.3_HTTPS.png)
