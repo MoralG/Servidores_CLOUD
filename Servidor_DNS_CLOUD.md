@@ -78,7 +78,7 @@ mysql           IN      CNAME   tortilla-int
 
 ~~~
 sudo cp /etc/bind/db.empty /var/cache/bind/db.0.0.10
-sudo cp /etc/bind/db.empty /var/cache/bind/db.200.22.172
+sudo cp /etc/bind/db.empty /var/cache/bind/db.22.172
 ~~~
 
 ###### Añadimos en el fichero */etc/bind/named.conf.local*
@@ -90,7 +90,7 @@ zone "0.0.10.in-addr.arpa"
   type master;
 };
 
-zone "200.22.172.in-addr.arpa"
+zone "22.172.in-addr.arpa"
 {
   file "db.22.172";
   type master;
@@ -129,7 +129,7 @@ $TTL    86400
 ;
 @               IN      NS      amorales.gonzalonazareno.org.
 
-$ORIGIN 200.22.172.in-addr.arpa.
+$ORIGIN 22.172.in-addr.arpa.
 200.125       IN      PTR     croqueta.amorales.gonzalonazareno.org.
 200.126       IN      PTR     tortilla.amorales.gonzalonazareno.org.
 200.127       IN      PTR     salmorejo.amorales.gonzalonazareno.org.
@@ -156,7 +156,7 @@ sudo named-checkzone 0.0.10.in-addr.arpa /var/cache/bind/db.0.0.10
    OK
 
 
-sudo named-checkzone 200.22.172.in-addr.arpa /var/cache/bind/db.22.172
+sudo named-checkzone 22.172.in-addr.arpa /var/cache/bind/db.22.172
    zone 22.172.in-addr.arpa/IN: loaded serial 1
    OK
 ~~~
@@ -265,13 +265,13 @@ dig @croqueta -x 172.22.200.126
    ; EDNS: version: 0, flags:; udp: 4096
    ; COOKIE: 2945f45cc2d701f0cbea09795ddb9a4181fb38616ce851a0 (good)
    ;; QUESTION SECTION:
-   ;126.200.22.172.in-addr.arpa.	IN	PTR
+   ;126.22.172.in-addr.arpa.	IN	PTR
    
    ;; ANSWER SECTION:
-   126.200.22.172.in-addr.arpa. 86400 IN	PTR	tortilla.amorales.gonzalonazareno.org.
+   126.22.172.in-addr.arpa. 86400 IN	PTR	tortilla.amorales.gonzalonazareno.org.
    
    ;; AUTHORITY SECTION:
-   200.22.172.in-addr.arpa. 86400	IN	NS	croqueta.amorales.gonzalonazareno.org.
+   22.172.in-addr.arpa. 86400	IN	NS	croqueta.amorales.gonzalonazareno.org.
    
    ;; ADDITIONAL SECTION:
    croqueta.amorales.gonzalonazareno.org. 86400 IN	A 172.22.200.125
