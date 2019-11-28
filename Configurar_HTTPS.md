@@ -183,7 +183,7 @@ server {
 }
 
 server {
-    listen 443;
+    listen 443 ssl;
     server_name  www.amorales.gonzalonazareno.org;
     ssl on;
     ssl_certificate /etc/pki/tls/amorales.gonzalonazareno.org.crt;
