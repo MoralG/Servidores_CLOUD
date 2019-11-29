@@ -230,6 +230,13 @@ restorecon -v -R /etc/pki/tls/
 sudo systemctl restart nginx
 ~~~
 
+###### Puede que tengamos que permitir acceso https por el puerto 443
+
+~~~
+sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
+sudo firewall-cms --reload
+~~~
+
 ###### Hecho esto podemos haceder a la dirección *https://* de los deos servicios, pero nos saldrá el mensaje de conexión privada
 
 ![Tarea1.2_HTTPS](image/Tarea1.2_HTTPS.png)
