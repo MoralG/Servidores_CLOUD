@@ -41,7 +41,7 @@
 
 #### Modifica las aplicaciones web y personalizalas para que se demuestre que son tus aplicaciones. Entrega una breve descripción de los pasos dados para conseguir la instalación de las aplicaciones web. Usando resolución estática entrega algunas capturas donde se demuestre que las aplicaciones están funcionando.
 
-### Tarea 4) [HTTPS (Seguridad)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Configurar_HTTPS.md#tarea-4-https)
+## Tarea 4) [HTTPS (Seguridad)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Configurar_HTTPS.md#tarea-4-https)
 
 #### El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor nginx para nuestras dos aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad "gestiona".
 
