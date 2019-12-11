@@ -47,7 +47,7 @@
 
 * Debes hacer una redirección para forzar el protocolo https.
 
-## Tarea 5) [Actualización de CentOS 7 a CentOS 8]()
+## Tarea 5) [Actualización de CentOS 7 a CentOS 8](https://github.com/MoralG/Servidores_CLOUD/blob/master/Actualizacion_CentOS8.md#actualizaci%C3%B3n-de-centos-7-a-centos-8)
 
 #### Para realizar la actualización correctamente tenemos que:
 
