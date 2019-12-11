@@ -129,6 +129,10 @@ sudo systemctl restart nginx
 sudo systemctl restart php-fpm
 ~~~
 
+##### Comprobación:
+
+![Tarea1.1](image/Tarea1.1_Hosting.png)
+
 * Se creará un usuario user_josedom, que tendrá una contraseña, para que accediendo a ftp.tunombre.gonzalonazareno.org, pueda gestionar los ficheros de su página web.
 
 ##### Creación del usuario:

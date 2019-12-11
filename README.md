@@ -2,7 +2,7 @@
 
 #### Práctica de ASIR, para la creación de un entorno real de trabajo en el cloud (Openstack) con distintos servicios y servidores.
 
-### Tarea 1) Instalación de los servidores
+## Tarea 1) Instalación de los servidores
 #### Crear tres máquinas en el cloud con los siguientes nombres y sistemas operativos:
 
 * Croqueta (Debian 10)
@@ -12,7 +12,7 @@
 1. Croqueta y Tortilla usan un volumen como unidad de disco principal.
 2. Se creará un usuario "profesor" con el que podrán acceder los profesores usando claves RSA.
 
-### Tarea 2) Instalación de un servidor Web (SERVICIOS)
+## Tarea 2) Instalación de un servidor Web (SERVICIOS)
 #### Ante de realizar la instalación del servidor web vamos a configurar el nombre de nuestras máquinas, para ello:
 
 1. Piensa en un nombre de dominio, que sera un subdominio de gonzalonazareno.org, y que contenga tu nombre, por ejemplo: josedom.gonzalonazareno.org.
@@ -32,7 +32,7 @@
 
 #### En tortilla (Ubuntu) vamos a instalar un servidor de base de datos mariadb. Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde los otros dos equipos.
 
-### Tarea 3) Instalación aplicaciones web (APLICACIONES WEB)
+## Tarea 3) Instalación aplicaciones web (APLICACIONES WEB)
 
 #### Vamos a instalar dos aplicaciones web php en nuestros servidores:
 
@@ -47,7 +47,7 @@
 
 * Debes hacer una redirección para forzar el protocolo https.
 
-### Tarea 6) Servidor DNS (SERVICIOS)
+## Tarea 6) Servidor DNS (SERVICIOS)
 
 #### Vamos a instalar un servidor dns que nos permita gestionar la resolución directa e inversa de nuestros nombres. Cada alumno va a poseer un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org.
 
@@ -66,3 +66,28 @@
 * Una resolución de un nombre de un servicio
 * Un resolución inversa de IP fija, y otra resolución inversa de IP flotante. (Esta consulta la debes hacer directamente preguntando a tu servidor).
 
+## Tarea 7) Hosting (SERVICIOS)
+
+#### Queremos que diferentes usuarios, puedan gestionar una página web en vuestro servidor que esté gestionada por medio de un FTP. También se creará una base de datos para cada usuario.
+
+#### Por ejemplo, el usuario josedom quiere hacer una página cuyo nombre será servicios:
+
+* La página que vamos a crear será accesible en https://servicios.tunombre.gonzalonazareno.org.
+* Se creará un usuario user_josedom, que tendrá una contraseña, para que accediendo a ftp.tunombre.gonzalonazareno.org, pueda gestionar los ficheros de su página web.
+* Se creará un usuario en la base de datos llamado myjosedom. Este usuario tendrá una contraseña distinta a la del usuario del servidor FTP.
+* Se creará una bases de datos para el usuario anteriormente creado. Para que los usuarios gestionen su base de datos se puede instalar la aplicación phpmyadmin a la que se accederá con la URL https://sql.tunombre.gonzalonmazareno.org.
+
+#### Tarea: Configura manualmente los distintos servicios para crear un nuevo usuario que gestione su propia página web y tenga una base de datos a su disposición. Instala un CMS.
+
+#### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.
+
+#### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
+
+## Tarea 8) Instalación de aplicación python (APLICACIONES WEBS)
+
+#### En esta tarea vamos a desplegar un CMS python . Hemos elegido Mezzanine, pero puedes elegir otro CMS python basado en django.
+
+* Instala el CMS en el entorno de desarrollo. Debes utilizar un entorno virtual.
+* Personaliza la página y añade contenido (algún artículo con alguna imagen).
+* Guarda los ficheros generados durante la instalación en un repositorio github. * Guarda también en ese repositorio la copia de seguridad de la bese de datos.
+* Realiza el despliegue de la aplicación en tu entorno de producción (servidor web y servidor de base de datos en el cloud). Utiliza un entorno de producción. Como servidor de aplicación puedes usar gunicorn o uwsgi (crea una unidad systemd para gestionar este servicio). La aplicación será accesible en la url python.tunombre.gonzalonazareno.org.

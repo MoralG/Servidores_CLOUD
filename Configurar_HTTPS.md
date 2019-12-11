@@ -234,7 +234,7 @@ sudo systemctl restart nginx
 
 ~~~
 sudo firewall-cmd --zone=public --add-port=443/tcp --permanent
-sudo firewall-cms --reload
+sudo systemctl restart firewalld
 ~~~
 
 ###### Hecho esto podemos haceder a la dirección *https://* de los deos servicios, pero nos saldrá el mensaje de conexión privada
