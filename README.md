@@ -2,7 +2,7 @@
 
 #### Práctica de ASIR, para la creación de un entorno real de trabajo en el cloud (Openstack) con distintos servicios y servidores.
 
-## Tarea 1) Instalación de los servidores
+## Tarea 1) [Instalación de los servidores]()
 #### Crear tres máquinas en el cloud con los siguientes nombres y sistemas operativos:
 
 * Croqueta (Debian 10)
@@ -12,7 +12,7 @@
 1. Croqueta y Tortilla usan un volumen como unidad de disco principal.
 2. Se creará un usuario "profesor" con el que podrán acceder los profesores usando claves RSA.
 
-## Tarea 2) Instalación de un servidor Web (SERVICIOS)
+## Tarea 2) [Instalación de un servidor Web (SERVICIOS)]()
 #### Ante de realizar la instalación del servidor web vamos a configurar el nombre de nuestras máquinas, para ello:
 
 1. Piensa en un nombre de dominio, que sera un subdominio de gonzalonazareno.org, y que contenga tu nombre, por ejemplo: josedom.gonzalonazareno.org.
@@ -32,7 +32,7 @@
 
 #### En tortilla (Ubuntu) vamos a instalar un servidor de base de datos mariadb. Entrega una prueba de funcionamiento donde se vea como se realiza una conexión a la base de datos desde los otros dos equipos.
 
-## Tarea 3) Instalación aplicaciones web (APLICACIONES WEB)
+## Tarea 3) [Instalación aplicaciones web (APLICACIONES WEB)]()
 
 #### Vamos a instalar dos aplicaciones web php en nuestros servidores:
 
@@ -41,13 +41,21 @@
 
 #### Modifica las aplicaciones web y personalizalas para que se demuestre que son tus aplicaciones. Entrega una breve descripción de los pasos dados para conseguir la instalación de las aplicaciones web. Usando resolución estática entrega algunas capturas donde se demuestre que las aplicaciones están funcionando.
 
-### Tarea 4) HTTPS (Seguridad)
+## Tarea 4) [HTTPS (Seguridad)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Configurar_HTTPS.md#tarea-4-https)
 
 #### El siguiente paso de nuestro proyecto es configurar de forma adecuada el protocolo HTTPS en nuestro servidor nginx para nuestras dos aplicaciones web. Para ello vamos a emitir un certificado wildcard en la AC Gonzalo Nazareno utilizando para la petición la utilidad "gestiona".
 
 * Debes hacer una redirección para forzar el protocolo https.
 
-## Tarea 6) Servidor DNS (SERVICIOS)
+## Tarea 5) [Actualización de CentOS 7 a CentOS 8](https://github.com/MoralG/Servidores_CLOUD/blob/master/Actualizacion_CentOS8.md#actualizaci%C3%B3n-de-centos-7-a-centos-8)
+
+#### Para realizar la actualización correctamente tenemos que:
+
+* Instalar el paquete _dnf_ y desinstalar _yum_
+* Cambiar e instalar nuevos repositorios
+* Actualizar el Kernel
+
+## Tarea 6) [Servidor DNS (SERVICIOS)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Servidor_DNS_CLOUD.md#tarea-6-servidor-dns) 
 
 #### Vamos a instalar un servidor dns que nos permita gestionar la resolución directa e inversa de nuestros nombres. Cada alumno va a poseer un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org.
 
@@ -66,7 +74,7 @@
 * Una resolución de un nombre de un servicio
 * Un resolución inversa de IP fija, y otra resolución inversa de IP flotante. (Esta consulta la debes hacer directamente preguntando a tu servidor).
 
-## Tarea 7) Hosting (SERVICIOS)
+## Tarea 7) [Hosting (SERVICIOS)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Hosting_FTP_y_Automatizacion.md#hosting-ftp-y-automatizaci%C3%B3n)
 
 #### Queremos que diferentes usuarios, puedan gestionar una página web en vuestro servidor que esté gestionada por medio de un FTP. También se creará una base de datos para cada usuario.
 
@@ -83,7 +91,7 @@
 
 #### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
 
-## Tarea 8) Instalación de aplicación python (APLICACIONES WEBS)
+## Tarea 8) [Instalación de aplicación python (APLICACIONES WEBS)]()
 
 #### En esta tarea vamos a desplegar un CMS python . Hemos elegido Mezzanine, pero puedes elegir otro CMS python basado en django.
 
