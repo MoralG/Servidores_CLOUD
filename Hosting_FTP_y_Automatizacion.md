@@ -304,7 +304,7 @@ sql             IN      CNAME   salmorejo
 sudo cp /usr/share/nginx/html/phpmyadmin/config.sample.inc.php /usr/share/nginx/html/phpmyadmin/config.inc.php
 ~~~
 
-###### Y el script de configuración que nos muestra, lo copias dentro del fichero 'config.inc.php'.
+###### Y el script de configuración que nos muestra, lo copiamos dentro del fichero 'config.inc.php'.
 
 ~~~
 <?php
