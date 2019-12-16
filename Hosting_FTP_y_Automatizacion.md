@@ -304,7 +304,7 @@ sql             IN      CNAME   salmorejo
 sudo cp /usr/share/nginx/html/phpmyadmin/config.sample.inc.php /usr/share/nginx/html/phpmyadmin/config.inc.php
 ~~~
 
-###### Y copiamos dentro de este el scrip de confuración que nos muestra en el fichero 'onfig.inc.php'.
+###### Y el script de configuración que nos muestra, lo copias dentro del fichero 'config.inc.php'.
 
 ~~~
 <?php
@@ -345,33 +345,8 @@ $cfg['SaveDir'] = '';
 
 ![Tarea1.6](image/Tarea1.6_FTP.png)
 
-#### Tarea: Configura manualmente los distintos servicios para crear un nuevo usuario que gestione su propia página web y tenga una base de datos a su disposición. Instala un CMS.
+#### Tarea: Después de instalar manualmente los distintos servicios para crear un nuevo usuario que gestione su propia página web y tenga una base de datos a su disposición. Instala un CMS.
 
 #### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.
 
 #### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
-
-
-
-0º Intalar y configurar le proftpd
-   Instalar y configurar el phpmyadmin
-   Crear paginas con los nombre ftp y sql
-
-1º Crear el usuario
-        En sistema o LDAP
-
-2º Crear un virtualhosts en el servidor web
-        Hacemos concidir el DocumentRoot con el DefaultRoot del FTP
-
-3º Añadir el CNAME en el Servidor DNS con el nombre del virtualhosts
-
-4º Crear el usuario de la Base de Datos y la Base de Datos
-
-5º MEJORA 1. 
-        Utilizar usuarios en LDAP
-        Configurarlo en el fichero proladapd.conf
-
-6º MEJORA 2.
-        Añadir: añadir usuario en la base de datos, añadir base de datos, añadir CNAME en DNS, crear nuevo virtualhosting, crear usuario en LDAP, 
-
-7º Te tiene que dar el usuario y contraseña del usuario ftp y el del mysql en el script.
