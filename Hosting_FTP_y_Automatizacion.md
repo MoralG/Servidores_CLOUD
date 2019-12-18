@@ -407,7 +407,7 @@ lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-includes
 
 ![Tarea1.7](image/Tarea1.7_FTP.png)
 
-###### Ahora solo quedaría completar el instalador del Wordpress ([Documentación del instalador de Wordpress]())
+###### Ahora solo quedaría completar el instalador del Wordpress ([Documentación del instalador de Wordpress](https://github.com/MoralG/Servidores_CLOUD/blob/master/Instalacion_Aplicaciones_Web.md#instalaci%C3%B3n-de-wordpress))
 
 ###### Hacemos click en
 #### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.

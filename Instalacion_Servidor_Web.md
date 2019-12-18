@@ -1,4 +1,4 @@
-## Tarea 2) [Instalación de un servidor Web (SERVICIOS)]()
+## Tarea 2. [Instalación de un servidor Web (SERVICIOS)]()
 #### Ante de realizar la instalación del servidor web vamos a configurar el nombre de nuestras máquinas, para ello:
 
 #### *Nombre de domino*
