@@ -347,6 +347,69 @@ $cfg['SaveDir'] = '';
 
 #### Tarea: Después de instalar manualmente los distintos servicios para crear un nuevo usuario que gestione su propia página web y tenga una base de datos a su disposición. Instala un CMS.
 
+~~~
+moralg@padano:~/Descargas$ ftp ftp.amorales.gonzalonazareno.org
+    Connected to salmorejo.amorales.gonzalonazareno.org.
+    220 FTP Server ready.
+
+Name (dir.amorales.gonzalonazareno.org:moralg): user_amorales
+    331 Password required for user_amorales
+
+Password:
+    230 User user_amorales logged in
+    Remote system type is UNIX.
+    Using binary mode to transfer files.
+
+ftp> !ls
+    wordpress
+
+ftp> mput *
+
+mput index.php?
+    200 PORT command successful
+    150 Opening BINARY mode data connection for index.php
+    226 Transfer complete
+    420 bytes sent in 0.01 secs (42.9483 kB/s)
+
+mput licencia.txt? 
+    200 PORT command successful
+    150 Opening BINARY mode data connection for licencia.txt
+    226 Transfer complete
+    17935 bytes sent in 0.01 secs (2.4529 MB/s)
+
+mput license.txt? 
+    200 PORT command successful
+    150 Opening BINARY mode data connection for license.txt
+    226 Transfer complete
+    19935 bytes sent in 0.02 secs (1.0832 MB/s)
+.
+.
+.
+~~~
+
+###### Para subir los directorios tendremos que descargarnos otro cliente de ftp, utilizaremos 'lftp'
+
+~~~
+sudo apt install lftp
+~~~
+
+###### Nos conectamos y subimos los directorios:
+
+~~~
+moralg@padano:~/Descargas/wordpress$ lftp -u user_amorales ftp.amorales.gonzalonazareno.org
+Clave: 
+lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-admin
+lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-content
+lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-includes
+~~~
+
+###### Ahora nos dirigimos a la  dirección 'dir.amorales.gonzalonazareno.org/wordpress'
+
+![Tarea1.7](image/Tarea1.7_FTP.png)
+
+###### Ahora solo quedaría completar el instalador del Wordpress ([Documentación del instalador de Wordpress]())
+
+###### Hacemos click en
 #### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.
 
 #### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
