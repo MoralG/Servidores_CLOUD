@@ -218,7 +218,7 @@ wget https://files.phpmyadmin.net/phpMyAdmin/4.9.2/phpMyAdmin-4.9.2-all-language
 
 ~~~
 sudo dnf install unzip
-unzip phpMyAdmin-4.9.2-all-languages.zip 
+unzip phpMyAdmin-4.9.2-all-languages.zip
 ~~~
 
 ###### Movemos el directorio creado a '/usr/share/nginx/html/phpmyadmin'
@@ -371,13 +371,13 @@ mput index.php?
     226 Transfer complete
     420 bytes sent in 0.01 secs (42.9483 kB/s)
 
-mput licencia.txt? 
+mput licencia.txt?
     200 PORT command successful
     150 Opening BINARY mode data connection for licencia.txt
     226 Transfer complete
     17935 bytes sent in 0.01 secs (2.4529 MB/s)
 
-mput license.txt? 
+mput license.txt?
     200 PORT command successful
     150 Opening BINARY mode data connection for license.txt
     226 Transfer complete
@@ -397,7 +397,7 @@ sudo apt install lftp
 
 ~~~
 moralg@padano:~/Descargas/wordpress$ lftp -u user_amorales ftp.amorales.gonzalonazareno.org
-Clave: 
+Clave:
 lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-admin
 lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-content
 lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-includes
@@ -407,9 +407,23 @@ lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-includes
 
 ![Tarea1.7](image/Tarea1.7_FTP.png)
 
-###### Ahora solo quedaría completar el instalador del Wordpress ([Documentación del instalador de Wordpress](https://github.com/MoralG/Servidores_CLOUD/blob/master/Instalacion_Aplicaciones_Web.md#instalaci%C3%B3n-de-wordpress))
+###### Ahora solo quedaría completar el instalador del Wordpress ([Documentación del instalador de Wordpress](https://github.com/MoralG/Servidores_CLOUD/blob/master/Instalacion_Aplicaciones_Web.md#instalaci%C3%B3n-de-wordpress)) pero con los datos necesarios para conectarse a la base de datos del usuario 'user_amorales'
 
-###### Hacemos click en
+* **Nombre de la base de datos**: db_amorales
+* **Nombre del usuario de la base de datos**: my_amorales
+* **Contraseña del usuario de la base de datos**: my_amorales
+* **Servidor de la base de datos**: mysql.amorales.gonzalonazareno.org
+
+##### Comprobación:
+
+###### Zona de administración del user_amorales
+
+![Tarea1.8](image/Tarea1.8_FTP.png)
+
+###### Zona pública
+
+![Tarea1.9](image/Tarea1.9_FTP.png)
+
 #### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.
 
 #### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
