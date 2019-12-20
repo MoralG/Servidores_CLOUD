@@ -424,6 +424,6 @@ lftp user_amorales@dir.amorales.gonzalonazareno.org:/> mirror -R wp-includes
 
 ![Tarea1.9](image/Tarea1.9_FTP.png)
 
-#### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.
+#### Mejora 1: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
 
-#### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
+###### Pulse [AQUÍ](https://github.com/MoralG/Servidores_CLOUD/blob/master/Script_CreacionBorradoUsuariosFTP.sh) para ver el script.

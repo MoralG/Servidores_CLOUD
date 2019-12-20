@@ -87,8 +87,6 @@
 
 #### Tarea: Configura manualmente los distintos servicios para crear un nuevo usuario que gestione su propia página web y tenga una base de datos a su disposición. Instala un CMS.
 
-#### Mejora 1: Modifica la configuración del sistema para que se usen usuarios virtuales para el acceso por FTP, cuya información este guardada en vuestro directorio ldap.
-
 #### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
 
 ## Tarea 8) [Instalación de aplicación python (APLICACIONES WEBS)]()
