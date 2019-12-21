@@ -89,7 +89,7 @@
 
 #### Mejora 2: Realiza un script que automatice la creación/borrado de nuevos usuarios en el hosting.
 
-## Tarea 8) [Instalación de aplicación python (APLICACIONES WEBS)]()
+## Tarea 8) [Instalación de aplicación python (APLICACIONES WEBS)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Instalacion_de_App_PYTHON.md#tarea-8-instalaci%C3%B3n-de-aplicaci%C3%B3n-python-aplicaciones-webs)
 
 #### En esta tarea vamos a desplegar un CMS python . Hemos elegido Mezzanine, pero puedes elegir otro CMS python basado en django.
 
