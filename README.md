@@ -55,7 +55,7 @@
 * Cambiar e instalar nuevos repositorios
 * Actualizar el Kernel
 
-## Tarea 6) [Servidor DNS (SERVICIOS)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Servidor_DNS_CLOUD.md#tarea-6-servidor-dns) 
+## Tarea 6) [Servidor DNS (SERVICIOS)](https://github.com/MoralG/Servidores_CLOUD/blob/master/Servidor_DNS_CLOUD.md#tarea-6-servidor-dns)
 
 #### Vamos a instalar un servidor dns que nos permita gestionar la resolución directa e inversa de nuestros nombres. Cada alumno va a poseer un servidor dns con autoridad sobre un subdominio de nuestro dominio principal gonzalonazareno.org, que se llamará tu_nombre.gonzalonazareno.org.
 
