@@ -565,13 +565,16 @@ sudo chown -R nginx:nginx /usr/share/nginx/html/iaw_mezzanine
 
 ~~~
 sudo setsebool -P httpd_can_network_connect on
-
-
 sudo find /usr/share/nginx/html/iaw_mezzanine -type f -exec chmod 0644 {} \;
 sudo find /usr/share/nginx/html/iaw_mezzanine -type d -exec chmod 0755 {} \;
-
 sudo chcon -t httpd_sys_rw_content_t /usr/share/nginx/html/iaw_mezzanine -R
-sudo chcon -t httpd_sys_content_t /usr/share/nginx/html/iaw_mezzanine -R
+~~~
+
+###### Iniciamos el socket y el servicio de gunicorn
+
+~~~
+sudo systemctl start gunicorn.socket
+sudo systemctl start gunicorn.service
 ~~~
 
 ###### Añadimos el registro en el DNS d la máquina croqueta.
